@@ -1,0 +1,28 @@
+{
+  "name": "mybackend",
+  "version": "1.0.0",
+  "description": "A backend Project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muz1058/MyBackend.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Backend"
+  ],
+  "author": "Muz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muz1058/MyBackend/issues"
+  },
+  "homepage": "https://github.com/Muz1058/MyBackend#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
