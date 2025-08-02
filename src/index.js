@@ -6,22 +6,23 @@ dotenv.config({
     path:'./.env'
 })//for this synatx consistency we add an experimental feature in package.json ,script-> dev ->-r dotenv/config --experimental-json-modules
 
-
+const port=process.env.PORT||8000;
+console.log("Server is Running at port :",port)
 connectDB()
 .then(()=>{
-    app.listen(process.env.PORT||3000,()=>{
-        console.log(`Server is Running at port ${process.env.PORT}`)
+    app.listen(port,()=>{
+        console.log("Server is Running at port :",port)
     })
 })
 .catch((error)=>{
-    //  app.on("error",(error)=>{
-//     console.log("ERROR :",error)
-//     throw error
-//    })
+   
     console.log("MongoDB connection Failed :",error)
 })
 
-
+ //  app.on("error",(error)=>{
+//     console.log("ERROR :",error)
+//     throw error
+//    })
 
 
 
