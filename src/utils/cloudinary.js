@@ -8,6 +8,7 @@ import fs from 'fs';
     });
 
     const uploadOnCloudinary =async (localFilePath)=>{
+    
         try {
             if(!localFilePath) return null;
 
@@ -17,10 +18,13 @@ import fs from 'fs';
             })
 
             // file uploded succefully
-            console.log("FIle is Uploaded on server :: ",response.url)
+            
+            await fs.unlinkSync(localFilePath);
+
+            
             return response;
         } catch (error) {
-            fs.unlinkSync(localFilePath)  // remove the lacally save temp file as the upload operation get failed
+           await fs.unlinkSync(localFilePath)  // remove the lacally save temp file as the upload operation get failed
         }
     }
 
