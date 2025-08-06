@@ -34,7 +34,7 @@ router.route("/change-password").post(
     verifyJWT,
     changeCurrentPassword
 )
-router.route("/curren-user").get(
+router.route("/current-user").get(
     verifyJWT,
     getCurrentUser
 )
