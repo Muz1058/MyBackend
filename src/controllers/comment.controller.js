@@ -13,14 +13,92 @@ const getVideoComments = asyncHandler(async (req, res) => {
 
 const addComment = asyncHandler(async (req, res) => {
     // TODO: add a comment to a video
+    const {videoId}=req.params;
+    if(!videoId){
+        throw new ApiError(401,"Cannot fetch video ID")
+    }
+
+    const myContent=req.body.content
+    console.log("Content ::",myContent)
+    
+
+    if(!myContent|| myContent.trim() === ""){
+        throw new ApiError(401,"comment content is required")
+    }
+    const owner=req.user?._id;
+
+    if(!owner){
+        throw new ApiError(401,"user data is required")
+    }
+
+    const comment=await Comment.create({
+        content:myContent,
+        video: videoId,
+        owner
+    })
+
+    if(!comment){
+        throw new ApiError(500,"Something went wrong while adding comment")
+    }
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,comment,"Comment added successfully"))
+
+
 })
 
 const updateComment = asyncHandler(async (req, res) => {
     // TODO: update a comment
+    const {commentId}=req.params;
+
+    if(!commentId){
+        throw new ApiError(401,"Somthing went wrong while fetching comment")
+    }
+
+    const myContent=req.body.content
+
+    if(!myContent||myContent.trim()===""){
+        throw new ApiError(401,"Comment content is required")
+    }
+
+    const updateComment=await Comment.findByIdAndUpdate(
+        commentId,
+        {
+            content:myContent
+        },
+        {
+            new:true
+        }
+    )
+
+    if(!updateComment){
+        throw new ApiError(500,"Something went wrong while updating content")
+    }
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,updateComment,"Comment updated successfully"))
+
 })
 
 const deleteComment = asyncHandler(async (req, res) => {
     // TODO: delete a comment
+    const {commentId}=req.params
+
+    if(!commentId){
+        throw new ApiError(401,"Somthing went wrong while fetching comment")
+    }
+
+    const deleteComment=await Comment.findByIdAndDelete(commentId)
+     if(!deleteComment){
+        throw new ApiError(500,"Something went wrong while deleting content")
+    }
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,deleteComment,"Comment deleted successfully"))
+
 })
 
 export {
