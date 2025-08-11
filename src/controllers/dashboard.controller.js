@@ -25,9 +25,18 @@ const getChannelStats = asyncHandler(async (req, res) => {
 
     
     const totalLikesData = await Like.aggregate([
-        { $match: { video: userId } }, // Assuming Like schema has `videoOwner`
-        { $count: "totalLikes" }
-    ]);
+    {
+        $lookup: {
+            from: "videos",
+            localField: "video",
+            foreignField: "_id",
+            as: "videoData"
+        }
+    },
+    { $unwind: "$videoData" },
+    { $match: { "videoData.owner": userId } },
+    { $count: "totalLikes" }
+]);
     const totalLikes = totalLikesData[0]?.totalLikes || 0;
 
     res.status(200).json(new ApiResponse(200, {
