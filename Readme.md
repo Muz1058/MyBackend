@@ -217,7 +217,7 @@ The application uses JWT-based authentication with:
 - Tweet content
 - User relationship
 
-## 🔧 Key Features Implementation
+##  Key Features Implementation
 
 ### File Upload
 - Uses Multer for handling multipart/form-data
@@ -240,7 +240,7 @@ The application uses JWT-based authentication with:
 - CORS configuration
 - Input validation and sanitization
 
-## 🚀 Development
+##  Development
 
 ### Running in Development Mode
 ```bash
@@ -256,7 +256,7 @@ Use tools like Postman or Thunder Client to test the API endpoints. Make sure to
 ### Database Setup
 Ensure MongoDB is running locally or provide a MongoDB Atlas connection string in the environment variables.
 
-## 📝 API Response Format
+##  API Response Format
 
 All API responses follow a consistent format:
 
@@ -319,4 +319,4 @@ If you encounter any issues or have questions, please create an issue in the rep
 
 ---
 
-**Happy Coding! 🎥✨**
+**Happy Coding! 
