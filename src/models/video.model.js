@@ -19,16 +19,17 @@ const videoSchema=new Schema({
         required:true
     },
     duration:{
-        type:Number //url
+        type:Number,
+        required:true //url
     },
     views:{
         type:Number,
         default:0
     },
-    isPublished:[{
+    isPublished:{
         type:Boolean,
         default:true
-    }],
+    },
     owner:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
