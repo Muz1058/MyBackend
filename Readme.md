@@ -298,8 +298,6 @@ This project is licensed under the MIT License.
 
 ## 🐛 Known Issues
 
-- The `getAllVideos` function in video controller needs implementation
-- The `getVideoComments` function in comment controller needs completion
 - Some aggregation pipelines may need optimization for large datasets
 
 ## 🔮 Future Enhancements
